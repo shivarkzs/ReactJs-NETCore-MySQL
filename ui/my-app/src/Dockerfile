@@ -1,14 +1,12 @@
-FROM node:latest
-
-RUN mkdir -p /usr/src/app
-
-COPY package.json /usr/src/app
-
+FROM node:alpine
+#RUN  apt update && apt npm install
+RUN mkdir /app
+WORKDIR /app
+COPY package.json /app
+COPY src /app/src
+COPY public /app/public
+COPY . /app
 RUN npm install
-
-ADD src /usr/src/app/src
-ADD public /usr/src/app/public
-Run npm build
-
-
-CMD ["npm", "run", "start"]
+RUN npm start
+EXPOSE 3000
+CMD ['npm', 'start']
