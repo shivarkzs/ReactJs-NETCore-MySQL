@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR /code
+WORKDIR /src
 
 COPY package.json package.json
 COPY package.json package.json
