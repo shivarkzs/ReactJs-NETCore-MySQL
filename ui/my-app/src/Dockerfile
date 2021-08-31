@@ -1,12 +1,14 @@
-FROM node:16.8-buster
+FROM node:latest
 
-WORKDIR /src
+RUN mkdir -p /usr/src/app
 
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+COPY package.json /usr/src/app
 
 RUN npm install
 
-COPY . .
+ADD src /usr/src/app/src
+ADD public /usr/src/app/public
+Run npm build
+
 
 CMD ["npm", "run", "start"]
