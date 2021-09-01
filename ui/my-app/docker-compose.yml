@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  reactjs:
+    image: shivark/react:latest
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: employeedb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password123
+      MYSQL_ROOT_PASSWORD: password123
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  db:
+networks:
+    frontend:
+    backend:
+  
